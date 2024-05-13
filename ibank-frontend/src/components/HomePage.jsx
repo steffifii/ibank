@@ -12,14 +12,14 @@ const HomePage = () => {
     const handleRedirect = text => {
         switch(text){
             case "Borrow":
-                if(authUser.role==="teller") navigate("/transactions");
+                if(authUser.role==="Teller") navigate("/transactions");
                 else navigate("/login");
                 break;
             case "Browse":
                 navigate("/transactions");
                 break;
             case "Manage":
-                if(authUser.role==="admin" || authUser.role==="teller") navigate("/users");
+                if(authUser.role==="Admin" || authUser.role==="Teller") navigate("/users");
                 else navigate("/login");
                 break;
             default: 

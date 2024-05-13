@@ -22,7 +22,7 @@ const LoginPage = () => {
 
         login({ 
             email: loginCredentials.email, 
-            role: "teller" 
+            role: "Teller" 
         });
 
         // dummy log in
@@ -36,13 +36,13 @@ const LoginPage = () => {
             if(res.data==="Teller logged in successfully") {
                 login({ 
                     email: loginCredentials.email, 
-                    role: "teller" 
+                    role: "Teller" 
                 });
                 
             } else if(res.data==="Administrator logged in successfully") {
                 login({ 
                     email: loginCredentials.email, 
-                    role: "admin" 
+                    role: "Admin" 
                 });
             }
         })

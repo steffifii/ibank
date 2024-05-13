@@ -65,7 +65,7 @@ const NavBar = () => {
             {logoNav()} {homeNav()} 
             {/* {booksNav()} */}
             {authUser ? 
-            authUser.role === "teller" ? <>{usersNav()} {userLogo()}</> 
+            authUser.role === "Teller" ? <>{usersNav()} {userLogo()}</> 
                 :<>{usersNav()} {librarianLogo()}</> 
                 : loginNav()}
             <Tooltip id="logout-tooltip" openEvents={{ click: true }} closeEvents={{ click: true }} globalCloseEvents={{ clickOutsideAnchor: true }} clickable={true} className="bg-light text-dark border border-2 hover-pointer arrow">

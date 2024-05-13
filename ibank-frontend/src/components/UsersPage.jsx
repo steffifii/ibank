@@ -1,27 +1,34 @@
-import React, { useRef, useState, useEffect } from "react";
-import { Tooltip } from "react-tooltip";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import Masonry from 'react-masonry-css';
 
-import EditUserModal from "./modals/EditUserModal";
+import { AuthContext } from "../assets/contexts/AuthContext";
+
 import { API_ENDPOINT } from "../assets/configuration/config";
 
 const UsersPage = () => {
+
+  const { authUser } = useContext(AuthContext);
 
   const[ users, setUsers ] = useState([]);
 
   const fetchUsers = () => {
     axios({
-        method: "get",
-        url: `${API_ENDPOINT}/users`
-      })
-      .then(res => {
-        setUsers(res.data);
-      }) 
-      .catch(err => {
-            console.error('Error fetching users:', err);
-      });
-}
+      method: "get",
+      url: `${API_ENDPOINT}/users`
+    })
+    .then(res => {
+      setUsers(res.data);
+    }) 
+    .catch(err => {
+       console.error('Error fetching users:', err);
+    });
+  }
+
+  const handleRedirect = () => {
+    if(authUser.role==="Teller"){}
+  }
+
+
 
   useEffect(()=>{
     fetchUsers();
@@ -29,18 +36,20 @@ const UsersPage = () => {
 
   return (<div className="users-page">
     <div className="container">
-      <table className="table">
+      <table className="table table-hover">
         <thead>
-          <th>User ID</th>
-          <th>Name</th>
-          <th>Birthdate</th>
-          <th>Email</th>
-          <th>Phone</th>
-          <th>Role</th>
+          <tr>
+            <th>User ID</th>
+            <th>Name</th>
+            <th>Birthdate</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Role</th>
+          </tr>
         </thead>
         <tbody>
           {users.map((u,i)=>{
-            return<tr key={i}>
+            return<tr key={i} onClick={()=>handleRedirect()}>
               <td>{u.userId}</td>
               <td>{u.name}</td>
               <td>{u.birthdate}</td>

@@ -30,8 +30,8 @@ public class SecurityConfig {
         http
 //                .authorizeHttpRequests(requests -> requests
 //                        .requestMatchers(HttpMethod.GET, "/").permitAll()
-//                        .requestMatchers("/manage").hasRole("LIBRARIAN")
-//                        .requestMatchers("/history").hasRole("USER")
+//                        .requestMatchers("/manage").hasRole("TELLER")
+//                        .requestMatchers("/history").hasRole("ADMIN")
 //                        .requestMatchers("/books").permitAll()
 //                        .anyRequest().authenticated()
 //                )
@@ -60,15 +60,15 @@ public class SecurityConfig {
         return source;
     }
 
-    @Bean
-    public CorsConfiguration corsConfiguration() {
-        CorsConfiguration config = new CorsConfiguration();
-        config.setAllowCredentials(true);
-        config.addAllowedOrigin("http://localhost:3000");
-        config.addAllowedHeader("*");
-        config.addAllowedMethod("*");
-        return config;
-    }
+//    @Bean
+//    public CorsConfiguration corsConfiguration() {
+//        CorsConfiguration config = new CorsConfiguration();
+//        config.setAllowCredentials(true);
+//        config.addAllowedOrigin("http://localhost:3000");
+//        config.addAllowedHeader("*");
+//        config.addAllowedMethod("*");
+//        return config;
+//    }
 
 //    @Bean
 //    public PasswordEncoder passwordEncoder() {

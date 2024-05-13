@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS ibank_system;
-CREATE DATABASE ibank_system;
-USE ibank_system;
+DROP DATABASE IF EXISTS ibank_management_system;
+CREATE DATABASE ibank_management_system;
+USE ibank_management_system;
 
 CREATE TABLE Users (
     user_id INT PRIMARY KEY AUTO_INCREMENT,

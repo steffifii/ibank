@@ -16,7 +16,7 @@ const UsersPage = () => {
         url: `${API_ENDPOINT}/users`
       })
       .then(res => {
-        setUsers(res.data)
+        setUsers(res.data);
       }) 
       .catch(err => {
             console.error('Error fetching users:', err);

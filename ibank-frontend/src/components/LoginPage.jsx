@@ -19,13 +19,6 @@ const LoginPage = () => {
             email: e.target.email.value,
             password: e.target.password.value
         }
-
-        login({ 
-            email: loginCredentials.email, 
-            role: "Teller" 
-        });
-
-        // dummy log in
     
         axios({
             method: "post",
@@ -44,6 +37,9 @@ const LoginPage = () => {
                     email: loginCredentials.email, 
                     role: "Admin" 
                 });
+            } else {
+                console.error("Incorrect user role.");
+                setLogInErrorMessage("Incorrect user role. Please contact admin.");
             }
         })
         .catch(err=>{

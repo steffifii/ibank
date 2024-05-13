@@ -2,7 +2,7 @@
 INSERT INTO Users (name, role, email, phone, password, gender, address, birthdate, deleted, balance)
 VALUES 
     ('Admin', 'Admin', 'admin@example.com', '432423525', 'admin123', 'Male', '123 Admin Street', '1990-01-01', false, 0),
-    ('Teller', 'Teller', 'teller@example.com', '543513424432','teller123', 'Female', '456 Teller Street', '1995-05-15', false, 0),
+    ('Teller', 'Teller', 'teller@example.com', '543513424432', 'teller123', 'Female', '456 Teller Street', '1995-05-15', false, 0),
     ('Customer', 'Customer', 'customer@example.com', '4543525325','customer123', 'Female', '789 Customer Street', '1993-05-15', false, 19876543.21);
 
 -- Inserting dummy data for Transactions table for the Customer User

@@ -22,7 +22,7 @@ const NavBar = () => {
 
     const homeNav = () => {
         return <NavLink className={`nav-item pe-sm-4 ${isMobNavOpen ? `show-item` : `hide-item`} des-item`} to="/" onClick={()=>setIsMobNavOpen(!isMobNavOpen)} active="true">
-            <i class="fas fa-home"></i>
+            <i className="fas fa-home"></i>
         </NavLink>
     }
 

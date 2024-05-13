@@ -39,7 +39,7 @@ public class UserController {
         }
     }
 
-    @PostMapping("/register")
+    @PostMapping("/new")
     public User createUser(@RequestBody User user) {
         try {
             return userDao.saveUser(user);

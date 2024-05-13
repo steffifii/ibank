@@ -34,8 +34,8 @@ const NavBar = () => {
         return <NavLink className={`nav-item ${isMobNavOpen ? `show-item` : `hide-item`} des-item`} to="/transactions" onClick={()=>setIsMobNavOpen(!isMobNavOpen)}>Transactions</NavLink>
     }
 
-    const manageNav = () => {
-        return <NavLink className={`nav-item ${isMobNavOpen ? `show-item` : `hide-item`} des-item`} to="/manage" onClick={()=>setIsMobNavOpen(!isMobNavOpen)}>Manage</NavLink>
+    const usersNav = () => {
+        return <NavLink className={`nav-item ${isMobNavOpen ? `show-item` : `hide-item`} des-item`} to="/users" onClick={()=>setIsMobNavOpen(!isMobNavOpen)}>Users</NavLink>
     }
 
     const userLogo = () => {
@@ -65,8 +65,8 @@ const NavBar = () => {
             {logoNav()} {homeNav()} 
             {/* {booksNav()} */}
             {authUser ? 
-            authUser.role === "teller" ? <>{transactionsNav()} {userLogo()}</> 
-                :<>{manageNav()} {librarianLogo()}</> 
+            authUser.role === "teller" ? <>{usersNav()} {userLogo()}</> 
+                :<>{usersNav()} {librarianLogo()}</> 
                 : loginNav()}
             <Tooltip id="logout-tooltip" openEvents={{ click: true }} closeEvents={{ click: true }} globalCloseEvents={{ clickOutsideAnchor: true }} clickable={true} className="bg-light text-dark border border-2 hover-pointer arrow">
                 <div onClick={()=>logout()}>Logout</div>

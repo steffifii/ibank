@@ -16,7 +16,7 @@ public class User {
     private String email;
     private String password;
     private String gender;
-    private String userType;
+    private String role;
     private String address;
     private String phone;
     private Date birthdate;
@@ -60,12 +60,12 @@ public class User {
         this.email = email;
     }
 
-    public String getUserType() {
-        return userType;
+    public String getRole() {
+        return role;
     }
 
-    public void setUserType(String userType) {
-        this.userType = userType;
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public String getPhone() {

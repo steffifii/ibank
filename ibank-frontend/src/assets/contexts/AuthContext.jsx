@@ -13,7 +13,7 @@ export function AuthProvider({ children }) {
     });
 
     const login = user => {
-        user.role==="teller" ? navigate('/transactions') : navigate('/manage');
+        navigate('/users');
         setAuthUser(user);
         localStorage.setItem("user", JSON.stringify(user));
     };

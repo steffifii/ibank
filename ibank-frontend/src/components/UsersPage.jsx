@@ -36,12 +36,17 @@ const UsersPage = () => {
           <th>Birthdate</th>
           <th>Email</th>
           <th>Phone</th>
+          <th>Role</th>
         </thead>
         <tbody>
           {users.map((u,i)=>{
             return<tr key={i}>
               <td>{u.userId}</td>
               <td>{u.name}</td>
+              <td>{u.birthdate}</td>
+              <td>{u.email}</td>
+              <td>{u.phone}</td>
+              <td>{u.role}</td>
             </tr>
           })}
         </tbody>

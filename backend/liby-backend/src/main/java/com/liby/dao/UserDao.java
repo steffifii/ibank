@@ -27,7 +27,7 @@ public class UserDao {
         User user = new User();
         user.setUserId(rs.getInt("user_id"));
         user.setName(rs.getString("name"));
-        user.setUserType(rs.getString("user_type"));
+        user.setRole(rs.getString("role"));
         user.setEmail(rs.getString("email"));
         user.setPhone(rs.getString("phone"));
         user.setPassword(rs.getString("password"));
@@ -41,7 +41,7 @@ public class UserDao {
 
     public List<User> getAllUsersWithTransactions() {
         String sql = "SELECT u.user_id, u.name, u.email, u.password, u.gender, u.address, " +
-                "u.birthdate, u.borrows_left, u.membership_date, " +
+                "u.birthdate, u.membership_date, " +
                 "FROM users u LEFT JOIN transactions t ON u.user_id = t.user_id " +
                 "WHERE u.deleted = FALSE ";
         List<User> users = jdbcTemplate.query(sql, new RowMapper<User>() {

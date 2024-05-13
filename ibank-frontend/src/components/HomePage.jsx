@@ -19,8 +19,7 @@ const HomePage = () => {
                 navigate("/transactions");
                 break;
             case "Manage":
-                if(authUser.role==="admin") navigate("/manage");
-                else if(authUser.role==="teller") navigate("/transactions");
+                if(authUser.role==="admin" || authUser.role==="teller") navigate("/users");
                 else navigate("/login");
                 break;
             default: 

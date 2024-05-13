@@ -5,6 +5,7 @@ USE ibank_system;
 CREATE TABLE Users (
     user_id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL,
+    role VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL,
     phone VARCHAR(100) UNIQUE NOT NULL,
     password VARCHAR(100) NOT NULL,

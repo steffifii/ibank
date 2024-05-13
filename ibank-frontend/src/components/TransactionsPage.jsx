@@ -10,7 +10,7 @@ const TransactionsPage = (user) => {
     const fetchTransactions = () => {
         axios({
             method: "get",
-            url: `${API_ENDPOINT}/transactions/${user.userId}`
+            url: `${API_ENDPOINT}/transactions/user/${user.userId}`
           })
           .then(res => {
               setTransactions(res.data)

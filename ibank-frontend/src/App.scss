@@ -280,50 +280,6 @@ a {
   }
 }
 
-/* Manage Page */
-
-.manage-searchbar-icon {
-  color: white !important;
-}
-
-.manage-user-details {
-  font-size: 13px;
-}
-
-.manage-user-book-title {
-  font-size: 12px;
-}
-
-.manage-user-book:hover {
-  cursor: pointer;
-} 
-
-.manage-book-card {
-  height: 65px !important;
-}
-
-.manage-user-book-comments {
-  font-size: 13px;
-}
-
-@media (min-width: 576px) {
-  .manage-page {
-    padding: 100px 90px;
-  }
-}
-
-/* Activity Page */
-
-.user-page {
-  background: linear-gradient(to right, #dfe6e4, rgb(222, 228, 226), #dee6e4, #dfe5e4);
-}
-
-@media (min-width: 576px) {
-  .user-page {
-    padding: 100px 90px;
-  }
-}
-
 /* Footer */
 
 .footer {

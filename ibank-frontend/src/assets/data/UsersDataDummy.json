@@ -1,0 +1,175 @@
+[
+    {
+      "id": 4321,
+      "name": "Alice Johnson",
+      "password": "defaultPassword",
+      "gender": "Female",
+      "email": "alice@example.com",
+      "birthdate": "1999-07-29",
+      "createAt": "2020-05-10",
+      "address": "15A Lorong Liput, Singapore 277730",
+      "books": [
+        {
+          "bookId" : 1232,
+          "title": "The Catcher in the Rye",
+          "dueDate": "2023-12-28",
+          "isReturned": false
+        },
+        {
+          "bookId" : 122,
+          "title": "Pride and Prejudice",
+          "dueDate": "2023-12-28",
+          "isReturned": false
+        }
+      ]
+    },
+    {
+      "id": 2321,
+      "name": "Bob Smith",
+      "password": "defaultPassword",
+      "gender": "Male",
+      "email": "bob@example.com",
+      "birthdate": "1988-07-19",
+      "createAt": "2018-10-21",
+      "address": "51 Cuppage Road, #07-22, Singapore 229469",
+      "books": [
+        {
+          "bookId" : 43,
+          "title": "To Kill a Mockingbird",
+          "dueDate": "2023-12-29",
+          "isReturned": false
+        },
+        {
+          "bookId" : 912,
+          "title": "The Great Gatsby",
+          "dueDate": "2023-11-29",
+          "isReturned": false
+        },
+        {
+          "bookId" : 92,
+          "title": "Animal Farm",
+          "dueDate": "2023-12-28",
+          "isReturned": false
+        }
+      ]
+    },
+    {
+      "id": 4621,
+      "name": "Charlie Brown",
+      "password": "defaultPassword",
+      "gender": "Male",
+      "email": "charlie@example.com",
+      "birthdate": "1968-07-19",
+      "createAt": "2021-08-15",
+      "address": "10 Anson Road, International Plaza, #10-11, Singapore 079903",
+      "books": []
+    },
+    {
+      "id": 4320,
+      "name": "Daisy Miller",
+      "password": "defaultPassword",
+      "gender": "Female",
+      "email": "daisy@example.com",
+      "birthdate": "1948-07-19",
+      "createAt": "2019-03-30",
+      "address": "6 Raffles Boulevard, Marina Square, #03-372, Singapore 039594",
+      "books": [
+        {
+          "bookId" : 832,
+          "title": "Jane Eyre",
+          "dueDate": "2023-10-29",
+          "isReturned": false
+        }
+      ]
+    },
+    {
+      "id": 4021,
+      "name": "Ella Davis",
+      "password": "defaultPassword",
+      "gender": "Female",
+      "email": "ella@example.com",
+      "birthdate": "1938-07-19",
+      "createAt": "2022-01-05",
+      "address": "8 Sentosa Gateway, Resorts World Sentosa, Singapore 098269",
+      "books": [
+        {
+          "bookId" : 432,
+          "title": "Crime and Punishment",
+          "dueDate": "2023-12-29",
+          "isReturned": false
+        }
+      ]
+    },
+    {
+      "id": 2221,
+      "name": "Franklin White",
+      "password": "defaultPassword",
+      "gender": "Male",
+      "email": "franklin@example.com",
+      "birthdate": "1998-07-19",
+      "createAt": "2017-07-19",
+      "address": "68 Orchard Road, Plaza Singapura, #B1-25, Singapore 238839",
+      "books": [
+        {
+          "bookId" : 1032,
+          "title": "Moby Dick",
+          "dueDate": "2023-12-29",
+          "isReturned": false
+        },
+        {
+          "bookId" : 1411,
+          "title": "War and Peace",
+          "dueDate": "2023-12-29",
+          "isReturned": false
+        },
+        {
+          "bookId" : 1412,
+          "title": "The Odyssey",
+          "dueDate": "2023-12-29",
+          "isReturned": false
+        }
+      ]
+    },
+    {
+      "id": 1111,
+      "name": "Grace Taylor",
+      "password": "defaultPassword",
+      "gender": "Female",
+      "email": "grace@example.com",
+      "birthdate": "2003-07-19",
+      "createAt": "2016-11-28",
+      "address": "181 Orchard Road, Orchard Central, #04-02, Singapore 238896",
+      "books": [
+        {
+          "bookId" : 1431,
+          "title": "The Hobbit",
+          "dueDate": "2023-11-19",
+          "isReturned": false
+        }
+      ]
+    },
+    {
+      "id": 1001,
+      "name": "Henry Adams",
+      "password": "defaultPassword",
+      "gender": "Male",
+      "email": "henry@example.com",
+      "birthdate": "2004-07-19",
+      "createAt": "2020-02-14",
+      "address": "8 Marina View, Asia Square Tower 1, #30-01, Singapore 018960",
+      "books": [
+        {
+          "bookId" : 1432,
+          "title": "Brave New World",
+          "dueDate": "2023-12-29",
+          "isReturned": false
+        },
+        {
+          "bookId" : 1232,
+          "title": "The Lord of the Rings",
+          "dueDate": "2023-10-29",
+          "isReturned": false
+        }
+      ]
+    }
+  ]

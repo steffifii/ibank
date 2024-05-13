@@ -1,0 +1,83 @@
+[
+    {
+      "transactionId": 1,
+      "userId": 1111,
+      "bookId": 3212,
+      "transactionDate": "2024-12-01",
+      "dueDate": "2024-12-15",
+      "returnDate": null,
+      "isRenewed": false,
+      "isReturned": false
+    },
+    {
+      "transactionId": 2,
+      "userId": 1111,
+      "bookId": 1441,
+      "transactionDate": "2023-12-25",
+      "dueDate": "2023-12-08",
+      "returnDate": null,
+      "isRenewed": true,
+      "isReturned": false
+    },
+    {
+      "transactionId": 3,
+      "userId": 1111,
+      "bookId": 4772,
+      "transactionDate": "2023-11-05",
+      "dueDate": "2023-11-19",
+      "returnDate": null,
+      "isRenewed": false,
+      "isReturned": false
+    },
+    {
+      "transactionId": 4,
+      "userId": 1111,
+      "bookId": 1212,
+      "transactionDate": "2023-11-05",
+      "dueDate": "2023-11-19",
+      "returnDate": "2023-11-06",
+      "isRenewed": false,
+      "isReturned": true
+    },
+    {
+      "transactionId": 5,
+      "userId": 1111,
+      "bookId": 4512,
+      "transactionDate": "2023-11-05",
+      "dueDate": "2023-11-19",
+      "returnDate": "2023-11-05",
+      "isRenewed": false,
+      "isReturned": true
+    },
+    {
+      "transactionId": 5,
+      "userId": 1111,
+      "bookId": 11,
+      "transactionDate": "2023-11-05",
+      "dueDate": "2023-11-19",
+      "returnDate": null,
+      "isRenewed": false,
+      "isReturned": false
+    },
+    {
+      "transactionId": 5,
+      "userId": 1111,
+      "bookId": 12,
+      "transactionDate": "2023-11-15",
+      "dueDate": "2023-11-29",
+      "returnDate": null,
+      "isRenewed": false,
+      "isReturned": false
+    },
+    {
+      "transactionId": 5,
+      "userId": 1111,
+      "bookId": 13,
+      "transactionDate": "2023-11-15",
+      "dueDate": "2023-11-29",
+      "returnDate": null,
+      "isRenewed": false,
+      "isReturned": false
+    }
+]
+  

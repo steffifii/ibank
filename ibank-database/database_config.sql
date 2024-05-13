@@ -19,11 +19,11 @@ CREATE TABLE Users (
 
 CREATE TABLE Transactions (
     transaction_id INT PRIMARY KEY AUTO_INCREMENT,
-    user_id INT NOT NULL,
+    transaction_user_id INT NOT NULL,
     transaction_date DATE NOT NULL,
     value INT NOT NULL,
     balance_before INT NOT NULL,
     balance_after INT NOT NULL,
     description VARCHAR(255),
-    CONSTRAINT fk_user_id_transactions FOREIGN KEY (user_id) REFERENCES Users(user_id)
+    CONSTRAINT fk_user_id_transactions FOREIGN KEY (transaction_user_id) REFERENCES Users(user_id)
 );

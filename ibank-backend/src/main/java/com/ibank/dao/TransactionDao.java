@@ -11,6 +11,8 @@ import org.springframework.stereotype.Repository;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.time.LocalDate;
+import java.sql.Date;
 
 @Repository
 public class TransactionDao {
@@ -35,9 +37,9 @@ public class TransactionDao {
         int userId = rs.getInt("user_id");
         User user = userDao.getUserById(userId);
         if (user != null) {
-            transaction.setUser(user);
+            transaction.setTransactionUserId(userId);
         } else {
-            ResponseEntity.status(HttpStatus.NOT_FOUND).body("User is not found in transaction");
+            ResponseEntity.status(HttpStatus.NOT_FOUND).body("User ID is not found in transaction");
         }
 
         return transaction;
@@ -59,15 +61,24 @@ public class TransactionDao {
     }
 
     public Transaction saveTransaction(Transaction transaction) {
-        String sql = "INSERT INTO transaction (user_id, value, description, transaction_date) " +
+        int userBalance = userDao.getUserBalance(transaction.getTransactionUserId());
+        int finalBalance = userBalance + transaction.getValue();
+
+        LocalDate currentDate = LocalDate.now();
+        Date sqlCurrentDate = Date.valueOf(currentDate);
+
+        String sql = "INSERT INTO `transaction` (transaction_user_id, value, description, transaction_date, balance_before, balance_after) " +
                 "VALUES (?, ?, ?, ?, ?, ?)";
         jdbcTemplate.update(sql,
-                transaction.getUser().getUserId(),
+                transaction.getTransactionUserId(),
                 transaction.getValue(),
                 transaction.getDescription(),
-                transaction.getTransactionDate(),
-                transaction.getBalanceBefore(),
-                transaction.getBalanceAfter());
+                sqlCurrentDate,
+                userBalance,
+                finalBalance);
+
+        userDao.updateUserBalance(transaction.getTransactionUserId(), finalBalance);
+
         return transaction;
     }
 
@@ -82,7 +93,7 @@ public class TransactionDao {
             String sql = "UPDATE transactions SET user_id = ?, transaction_date = ?, description = ?, value = ?, " +
                     "WHERE transaction_id = ?";
             jdbcTemplate.update(sql,
-                    updatedTransaction.getUser().getUserId(),
+                    updatedTransaction.getTransactionUserId(),
                     updatedTransaction.getTransactionDate(),
                     updatedTransaction.getDescription(),
                     updatedTransaction.getValue(),

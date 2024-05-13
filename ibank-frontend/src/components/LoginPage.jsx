@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import axios from "axios";
 
 import { API_ENDPOINT } from "../assets/configuration/config";
-import NewUserModal from "./modals/NewUserModal";
+import NewUserModal from "./modals/CreateUserModal";
 import { AuthContext } from "../assets/contexts/AuthContext";
 
 const LoginPage = () => {

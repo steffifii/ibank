@@ -11,6 +11,7 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "transaction_id")
     private int transactionId;
+    private int transactionUserId;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
@@ -27,6 +28,14 @@ public class Transaction {
 
     public void setTransactionId(int transactionId) {
         this.transactionId = transactionId;
+    }
+
+    public int getTransactionUserId() {
+        return transactionUserId;
+    }
+
+    public void setTransactionUserId(int transactionUserId) {
+        this.transactionUserId = transactionUserId;
     }
 
     public User getUser() {

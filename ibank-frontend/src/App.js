@@ -5,7 +5,6 @@ import { AuthProvider } from './assets/contexts/AuthContext';
 import NavBar from './components/NavBar';
 import HomePage from './components/HomePage';
 import UsersPage from './components/UsersPage';
-import TransactionsPage from "./components/TransactionsPage";
 import LoginPage from './components/LoginPage';
 import Footer from './components/Footer';
 
@@ -18,7 +17,6 @@ function App() {
         <Route path="/" element={<HomePage/>}/>
         <Route path="/login" element={<LoginPage/>}/>
         <Route path="/users" element={<UsersPage/>}/>
-        <Route path="/transactions" element={<TransactionsPage/>}/>
       </Routes>
       <Footer/>
     </AuthProvider>

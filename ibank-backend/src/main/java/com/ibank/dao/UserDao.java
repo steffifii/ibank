@@ -97,6 +97,16 @@ public class UserDao {
         return count > 0;
     }
 
+    public int getUserBalance(int userId) {
+        String sql = "SELECT balance FROM users WHERE user_id = ?";
+        try {
+            return jdbcTemplate.queryForObject(sql, Integer.class, userId);
+        } catch (EmptyResultDataAccessException e) {
+            System.out.println("No User found with user ID: " + userId + e);
+            return 0;
+        }
+    }
+
     public User updateUser(int userId, User updatedUser) {
         if (doesUserExist(userId)) {
             String sql = "UPDATE users SET name = ?, email = ?, password = ?, gender = ?, " +
@@ -117,6 +127,11 @@ public class UserDao {
             ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
             return null;
         }
+    }
+
+    public void updateUserBalance(int userId, int newBalance) {
+        String sql = "UPDATE users SET balance = ? WHERE user_id = ?";
+        jdbcTemplate.update(sql, newBalance, userId);
     }
 
     public User findByEmail(String email) {

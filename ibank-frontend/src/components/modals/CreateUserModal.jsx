@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import ReactModal from "react-modal";
 
-const NewBookModal = ({ isNewUserMode, setIsNewUserMode, API_ENDPOINT }) => {
+const CreateUserModal = ({ isNewUserMode, setIsNewUserMode, API_ENDPOINT }) => {
 
     const handleAddUser = e => {
         const newUser = {
@@ -77,4 +77,4 @@ const NewBookModal = ({ isNewUserMode, setIsNewUserMode, API_ENDPOINT }) => {
     )
 }
 
-export default NewBookModal;
+export default CreateUserModal;

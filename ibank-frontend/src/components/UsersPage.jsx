@@ -1,15 +1,20 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 
-import { AuthContext } from "../assets/contexts/AuthContext";
+import TransactionsModal from "./modals/TransactionsModal";
+import EditUserModal from "./modals/EditUserModal";
 
+import { AuthContext } from "../assets/contexts/AuthContext";
 import { API_ENDPOINT } from "../assets/configuration/config";
 
 const UsersPage = () => {
 
   const { authUser } = useContext(AuthContext);
 
-  const[ users, setUsers ] = useState([]);
+  const [ selectedUser, setSelectedUser ] = useState({});
+  const [ users, setUsers ] = useState([]);
+  const [ isTransactionsPage, setIsTransactionsPage ] = useState(false);
+  const [ isEditUserMode, setIsEditUserMode ] = useState(false);
 
   const fetchUsers = () => {
     axios({
@@ -17,18 +22,28 @@ const UsersPage = () => {
       url: `${API_ENDPOINT}/users`
     })
     .then(res => {
-      setUsers(res.data);
+      if(authUser.role==="Teller"){
+        let data = res.data.filter(item=>item.role==="Customer");
+        setUsers(data);
+      } else if(authUser.role==="Admin"){
+        let data = res.data.filter(item=>item.role==="Customer" || item.role==="Teller");
+        setUsers(data);
+      }
     }) 
     .catch(err => {
        console.error('Error fetching users:', err);
     });
   }
 
-  const handleRedirect = () => {
-    if(authUser.role==="Teller"){}
+  const handleRedirect = user => {
+    setSelectedUser(user);
+
+    if(authUser.role==="Teller"){
+      setIsTransactionsPage(true);
+    } else if(authUser.role==="Admin"){
+      setIsEditUserMode(true);
+    }
   }
-
-
 
   useEffect(()=>{
     fetchUsers();
@@ -49,7 +64,7 @@ const UsersPage = () => {
         </thead>
         <tbody>
           {users.map((u,i)=>{
-            return<tr key={i} onClick={()=>handleRedirect()}>
+            return<tr key={i} onClick={()=>handleRedirect(u)}>
               <td>{u.userId}</td>
               <td>{u.name}</td>
               <td>{u.birthdate}</td>
@@ -61,6 +76,8 @@ const UsersPage = () => {
         </tbody>
       </table>
     </div>
+    { isTransactionsPage && <TransactionsModal isTransactionsPage={isTransactionsPage} setIsTransactionsPage={setIsTransactionsPage} user={selectedUser}/>}
+    { isEditUserMode && <EditUserModal isEditUserMode={isEditUserMode} setIsEditUserMode={setIsEditUserMode} user={selectedUser} API_ENDPOINT={API_ENDPOINT}/>}
   </div>)
 }
 

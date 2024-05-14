@@ -97,20 +97,10 @@ public class UserDao {
         return count > 0;
     }
 
-    public int getUserBalance(int userId) {
-        String sql = "SELECT balance FROM users WHERE user_id = ?";
-        try {
-            return jdbcTemplate.queryForObject(sql, Integer.class, userId);
-        } catch (EmptyResultDataAccessException e) {
-            System.out.println("No User found with user ID: " + userId + e);
-            return 0;
-        }
-    }
-
     public User updateUser(int userId, User updatedUser) {
         if (doesUserExist(userId)) {
             String sql = "UPDATE users SET name = ?, email = ?, password = ?, gender = ?, " +
-                    "address = ?, birthdate = ?, borrows_left = ?, phone = ?, balance = ? " +
+                    "address = ?, birthdate = ?, phone = ?" +
                     "WHERE user_id = ?";
             jdbcTemplate.update(sql,
                     updatedUser.getName(),
@@ -120,7 +110,6 @@ public class UserDao {
                     updatedUser.getAddress(),
                     updatedUser.getBirthdate(),
                     updatedUser.getPhone(),
-                    updatedUser.getBalance(),
                     userId);
             return updatedUser;
         } else {

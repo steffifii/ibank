@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Calendar;
 import java.util.List;
 import java.time.LocalDate;
 import java.sql.Date;
@@ -55,13 +56,15 @@ public class TransactionDao {
     public Transaction saveTransaction(Transaction transaction) {
         String sql = "INSERT INTO transactions (transaction_user_id, transaction_date, value, balance_before, balance_after, description) VALUES (?, ?, ?, ?, ?, ?)";
 
+        Date currentDate = new Date(Calendar.getInstance().getTime().getTime());
+
         int balanceBefore = userDao.getUserById(transaction.getTransactionUserId()).getBalance();
 
         int balanceAfter = balanceBefore + transaction.getValue();
 
         jdbcTemplate.update(sql,
                 transaction.getTransactionUserId(),
-                transaction.getTransactionDate(),
+                currentDate,
                 transaction.getValue(),
                 balanceBefore,
                 balanceAfter,

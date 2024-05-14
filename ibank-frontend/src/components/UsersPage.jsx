@@ -3,6 +3,7 @@ import axios from "axios";
 
 import TransactionsModal from "./modals/TransactionsModal";
 import EditUserModal from "./modals/EditUserModal";
+import CreateUserModal from "./modals/CreateUserModal"
 
 import { AuthContext } from "../assets/contexts/AuthContext";
 import { API_ENDPOINT } from "../assets/configuration/config";
@@ -15,6 +16,7 @@ const UsersPage = () => {
   const [ users, setUsers ] = useState([]);
   const [ isTransactionsPage, setIsTransactionsPage ] = useState(false);
   const [ isEditUserMode, setIsEditUserMode ] = useState(false);
+  const [ isNewUserMode, setIsNewUserMode ] = useState(false);
 
   const fetchUsers = () => {
     axios({
@@ -51,6 +53,10 @@ const UsersPage = () => {
 
   return (<div className="users-page">
     <div className="container">
+      <div className="text-center mt-4">
+      <h1>Users</h1>
+        { authUser.role==="Admin" && <button className="btn btn-success text-white" onClick={()=>setIsNewUserMode(true)}>+ New User</button> }
+      </div>
       <table className="table table-hover">
         <thead>
           <tr>
@@ -63,8 +69,8 @@ const UsersPage = () => {
           </tr>
         </thead>
         <tbody>
-          {users.map((u,i)=>{
-            return<tr key={i} onClick={()=>handleRedirect(u)}>
+          { users.map((u,i)=>{
+            return<tr className="user-row" key={i} onClick={()=>handleRedirect(u)}>
               <td>{u.userId}</td>
               <td>{u.name}</td>
               <td>{u.birthdate}</td>
@@ -78,6 +84,7 @@ const UsersPage = () => {
     </div>
     { isTransactionsPage && <TransactionsModal isTransactionsPage={isTransactionsPage} setIsTransactionsPage={setIsTransactionsPage} user={selectedUser}/>}
     { isEditUserMode && <EditUserModal isEditUserMode={isEditUserMode} setIsEditUserMode={setIsEditUserMode} user={selectedUser} API_ENDPOINT={API_ENDPOINT}/>}
+    { isNewUserMode && <CreateUserModal isNewUserMode={isNewUserMode} setIsNewUserMode={setIsNewUserMode} API_ENDPOINT={API_ENDPOINT}/>}
   </div>)
 }
 

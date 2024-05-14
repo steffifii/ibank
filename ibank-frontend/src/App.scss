@@ -232,21 +232,19 @@ a {
   }
 }
 
-/* Create Book */
+// users
 
-#create-title-input, #create-author-input, #create-language-input, #create-genre-input, #create-publication-date-input, #create-image-path-input, #create-subject-input,
-
-/* Book */
-
-#update-title-input, #update-id-input, #update-author-input, #update-language-input, #update-genre-input, #update-publication-date-input, #update-image-path-input, #update-subject-input, #update-book-user-email-input,
+.user-row {
+  cursor: pointer;
+}
 
 /* Register */
 
-#register-name-input, #register-email-input, #register-gender-input, #register-address-input, #register-password-input, #register-birthdate-input,
+#register-name-input, #register-email-input, #register-phone-input, #register-gender-input, #register-address-input, #register-password-input, #register-birthdate-input,
 
 /* User */
 
-#update-name-input, #update-address-input, #update-birthdate-input, #update-gender-input, #update-email-input {
+#update-name-input, #update-address-input, #update-birthdate-input, #update-phone-input, #update-gender-input, #update-email-input {
   width: 100%;
 }
 

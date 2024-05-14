@@ -15,8 +15,7 @@ const TransactionsModal = ({ isTransactionsPage, setIsTransactionsPage, user }) 
             url: `${API_ENDPOINT}/transactions/user/${user.userId}`
           })
           .then(res => {
-              setTransactions(res.data);
-              console.log(res.data);
+              setTransactions(res.data.reverse());
           }) 
           .catch(err => {
                 console.error('Error fetching transactions:', err);
@@ -74,7 +73,7 @@ const TransactionsModal = ({ isTransactionsPage, setIsTransactionsPage, user }) 
                             return<tr key={i}>
                                 <td>{t.transactionId}</td>
                                 <td>{t.description}</td>
-                                {t.value.toLocaleString() < 0 ? <><td>{-t.value.toLocaleString()}</td><td></td></> : <><td></td><td>{t.value}</td></>}
+                                {t.value < 0 ? <><td>{t.value.toLocaleString().substring(1)}</td><td></td></> : <><td></td><td>{t.value.toLocaleString()}</td></>}
                                 <td>{t.balanceAfter.toLocaleString()}</td>
                             </tr>
                         })}

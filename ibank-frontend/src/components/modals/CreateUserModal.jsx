@@ -42,6 +42,14 @@ const CreateUserModal = ({ isNewUserMode, setIsNewUserMode, API_ENDPOINT }) => {
                             <input type="text" className="text-center text-md-start ps-sm-2 rounded-4" id="register-name-input" name="name" maxLength="100" required/>
                         </p>
                         <p>
+                            <label htmlFor="register-name-input">Phone: </label> <br />
+                            <input type="number" className="text-center text-md-start ps-sm-2 rounded-4" id="register-phone-input" name="phone" maxLength="100" required/>
+                        </p>
+                        <p>
+                            <label htmlFor="register-birthdate-input">Birthdate: </label> <br />
+                            <input type="date" className="text-center text-md-start ps-sm-2 rounded-4" id="register-birthdate-input" name="birthdate" title="Please enter your full name" required/>
+                        </p>
+                        <p>
                             <label htmlFor="register-gender-input">Gender: </label> <br />
                             <select id="register-gender-input" name="gender" className="rounded-4 ps-sm-2" required>
                             <option className="text-center text-md-start" value=""></option>
@@ -50,16 +58,8 @@ const CreateUserModal = ({ isNewUserMode, setIsNewUserMode, API_ENDPOINT }) => {
                             <option className="text-center text-md-start" value="Other">Other</option>
                             </select>
                         </p>
-                        <p>
-                            <label htmlFor="register-address-input">Address: </label> <br />
-                            <textarea type="address" className="text-center text-md-start ps-sm-2 rounded-4" id="register-address-input" name="address" maxLength="255" title="Please enter a valid address (maximum 255 characters)" required/>
-                        </p>
                     </div>
                     <div className="col-sm-6">
-                        <p>
-                            <label htmlFor="register-birthdate-input">Birthdate: </label> <br />
-                            <input type="date" className="text-center text-md-start ps-sm-2 rounded-4" id="register-birthdate-input" name="birthdate" title="Please enter your full name" required/>
-                        </p>
                         <p>
                             <label htmlFor="register-email-input">Email: </label> <br />
                             <input type="email" className="text-center text-md-start ps-sm-2 rounded-4" id="register-email-input" name="email" title="Please enter a valid email address" required/>
@@ -67,6 +67,10 @@ const CreateUserModal = ({ isNewUserMode, setIsNewUserMode, API_ENDPOINT }) => {
                         <p>
                             <label htmlFor="register-password-input">Password: </label> <br />
                             <input type="text" className="text-center text-md-start ps-sm-2 rounded-4" id="register-password-input" name="password" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" title="Password must be at least 8 characters and contain letters and numbers" required/>
+                        </p>
+                        <p>
+                            <label htmlFor="register-address-input">Address: </label> <br />
+                            <textarea type="address" className="text-center text-md-start ps-sm-2 rounded-4" id="register-address-input" name="address" maxLength="255" title="Please enter a valid address (maximum 255 characters)" required/>
                         </p>
                     </div>
                 </div>

@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 import axios from "axios";
 
 import { API_ENDPOINT } from "../assets/configuration/config";
-import NewUserModal from "./modals/CreateUserModal";
 import { AuthContext } from "../assets/contexts/AuthContext";
 
 const LoginPage = () => {
@@ -67,8 +66,6 @@ const LoginPage = () => {
                 </form>
             </div>
             { logInErrorMessage!=="" && <div className="login-form-width text-center bg-danger rounded-2 mx-auto text-white my-2" style={{opacity: 0.6}}>{logInErrorMessage}</div>}
-            <span onClick={()=>setIsNewUserMode(true)} className="sign-up-prompt text-center text-muted fst-italic mt-1">No Account Yet, Sign Up?</span>
-            <NewUserModal isNewUserMode={isNewUserMode} setIsNewUserMode={setIsNewUserMode} API_ENDPOINT={API_ENDPOINT}/>
         </div>
     </div>
 </div>)

@@ -9,7 +9,7 @@ VALUES
     ('Ahmad', 'Customer', 'fewrwer@example.com', '54234324','customer123', 'Female', 'Sengkang Street', '1996-05-25', false, 19876543.21),
     ('Viknesh', 'Customer', 'rewrre@example.com', '8768567456','customer123', 'Female', '789 Bishan Street', '1997-05-15', false, 19876543.21),
     ('Lucy', 'Customer', 'erwrewr@example.com', '84554677','customer123', 'Female', '789 Dhoby Ghaut Street', '1998-03-15', false, 19876543.21);
-    
+
 INSERT INTO Users (name, role, email, phone, password, gender, address, birthdate, deleted, balance)
 SELECT
     CONCAT(
@@ -20,19 +20,17 @@ SELECT
         SUBSTRING('abcdefghijklmnopqrstuvwxyz', FLOOR(RAND() * 26) + 1, 1)
     ) AS name, -- Generate random names
     'Customer' AS role,
-    CONCAT('customer', RAND(), '@example.com') AS email,
-    FLOOR(100000000 + RAND() * 899999999) AS phone, 
+    CONCAT('customer', FLOOR(RAND() * 1000000), '@example.com') AS email,
+    FLOOR(1000000000 + RAND() * 9000000000) AS phone, 
     'customer123' AS password,
     CASE FLOOR(RAND() * 2)
         WHEN 0 THEN 'Male'
         ELSE 'Female'
     END AS gender, 
-    CONCAT('123 Random Street', ' ', RAND()) AS address, 
+    CONCAT('123 Random Street', FLOOR(RAND() * 1000)) AS address, 
     DATE_SUB('2003-01-01', INTERVAL FLOOR(RAND() * 30) YEAR) AS birthdate, 
     false AS deleted,
     FLOOR(RAND() * 1000000) + 100000 AS balance 
 FROM
-    information_schema.tables
-LIMIT 25; 
-
-
+    (SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10) t
+LIMIT 25;

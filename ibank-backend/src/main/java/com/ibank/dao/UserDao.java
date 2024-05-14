@@ -35,6 +35,7 @@ public class UserDao {
         user.setGender(rs.getString("gender"));
         user.setAddress(rs.getString("address"));
         user.setBirthdate(rs.getDate("birthdate"));
+        user.setMembershipDate(rs.getDate("membership_date"));
         user.setBalance(rs.getInt("balance"));
 
         return user;

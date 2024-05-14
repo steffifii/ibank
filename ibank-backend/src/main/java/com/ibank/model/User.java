@@ -21,8 +21,8 @@ public class User {
     private String phone;
     private Date birthdate;
     private int balance;
-    @Column(name = "signup_date")
-    private Date signupDate;
+    @Column(name = "membership_date")
+    private Date membershipDate;
     private boolean deleted;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
@@ -108,12 +108,12 @@ public class User {
         this.birthdate = birthdate;
     }
 
-    public Date getSignupDate() {
-        return signupDate;
+    public Date getMembershipDate() {
+        return membershipDate;
     }
 
-    public void setSignupDate(Date signupDate) {
-        this.signupDate = signupDate;
+    public void setMembershipDate(Date membershipDate) {
+        this.membershipDate = membershipDate;
     }
 
     public List<Transaction> getTransactions() {

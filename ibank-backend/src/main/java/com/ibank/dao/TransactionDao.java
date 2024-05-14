@@ -28,20 +28,12 @@ public class TransactionDao {
     private Transaction mapRowToTransaction(ResultSet rs, int rowNum) throws SQLException {
         Transaction transaction = new Transaction();
         transaction.setTransactionId(rs.getInt("transaction_id"));
+        transaction.setTransactionUserId(rs.getInt("transaction_user_id"));
         transaction.setTransactionDate(rs.getDate("transaction_date"));
         transaction.setValue(rs.getInt("value"));
         transaction.setBalanceBefore(rs.getInt("balance_before"));
         transaction.setBalanceAfter(rs.getInt("balance_after"));
         transaction.setDescription(rs.getString("description"));
-
-        int userId = rs.getInt("user_id");
-        User user = userDao.getUserById(userId);
-        if (user != null) {
-            transaction.setTransactionUserId(userId);
-        } else {
-            ResponseEntity.status(HttpStatus.NOT_FOUND).body("User ID is not found in transaction");
-        }
-
         return transaction;
     }
 
@@ -56,31 +48,30 @@ public class TransactionDao {
     }
 
     public List<Transaction> getTransactionsByUserId(int userId) {
-        String sql = "SELECT * FROM transactions WHERE user_id = ?";
+        String sql = "SELECT * FROM transactions WHERE transaction_user_id = ?";
         return jdbcTemplate.query(sql, this::mapRowToTransaction, userId);
     }
 
     public Transaction saveTransaction(Transaction transaction) {
-        int userBalance = userDao.getUserBalance(transaction.getTransactionUserId());
-        int finalBalance = userBalance + transaction.getValue();
+        String sql = "INSERT INTO transactions (transaction_user_id, transaction_date, value, balance_before, balance_after, description) VALUES (?, ?, ?, ?, ?, ?)";
 
-        LocalDate currentDate = LocalDate.now();
-        Date sqlCurrentDate = Date.valueOf(currentDate);
+        int balanceBefore = userDao.getUserById(transaction.getTransactionUserId()).getBalance();
 
-        String sql = "INSERT INTO `transaction` (transaction_user_id, value, description, transaction_date, balance_before, balance_after) " +
-                "VALUES (?, ?, ?, ?, ?, ?)";
+        int balanceAfter = balanceBefore + transaction.getValue();
+
         jdbcTemplate.update(sql,
                 transaction.getTransactionUserId(),
+                transaction.getTransactionDate(),
                 transaction.getValue(),
-                transaction.getDescription(),
-                sqlCurrentDate,
-                userBalance,
-                finalBalance);
+                balanceBefore,
+                balanceAfter,
+                transaction.getDescription());
 
-        userDao.updateUserBalance(transaction.getTransactionUserId(), finalBalance);
+        userDao.updateUserBalance(transaction.getTransactionUserId(), balanceAfter);
 
         return transaction;
     }
+
 
     public boolean doesTransactionExist(int transactionId) {
         String sql = "SELECT COUNT(*) FROM transactions WHERE transaction_id = ?";
@@ -90,7 +81,7 @@ public class TransactionDao {
 
     public Transaction updateTransaction(int transactionId, Transaction updatedTransaction) {
         if (doesTransactionExist(transactionId)) {
-            String sql = "UPDATE transactions SET user_id = ?, transaction_date = ?, description = ?, value = ?, " +
+            String sql = "UPDATE transactions SET transaction_user_id = ?, transaction_date = ?, description = ?, value = ?, " +
                     "WHERE transaction_id = ?";
             jdbcTemplate.update(sql,
                     updatedTransaction.getTransactionUserId(),

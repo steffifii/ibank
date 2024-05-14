@@ -15,7 +15,8 @@ const TransactionsModal = ({ isTransactionsPage, setIsTransactionsPage, user }) 
             url: `${API_ENDPOINT}/transactions/user/${user.userId}`
           })
           .then(res => {
-              setTransactions(res.data)
+              setTransactions(res.data);
+              console.log(res.data);
           }) 
           .catch(err => {
                 console.error('Error fetching transactions:', err);

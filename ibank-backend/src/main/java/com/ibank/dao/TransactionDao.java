@@ -54,7 +54,8 @@ public class TransactionDao {
     }
 
     public Transaction saveTransaction(Transaction transaction) {
-        String sql = "INSERT INTO transactions (transaction_user_id, transaction_date, value, balance_before, balance_after, description) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO transactions (transaction_user_id, transaction_date, " +
+        "value, balance_before, balance_after, description) VALUES (?, ?, ?, ?, ?, ?)";
 
         Date currentDate = new Date(Calendar.getInstance().getTime().getTime());
 

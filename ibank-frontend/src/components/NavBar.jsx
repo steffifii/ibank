@@ -26,14 +26,6 @@ const NavBar = () => {
         </NavLink>
     }
 
-    const booksNav = () => {
-        return <NavLink className={`nav-item pe-sm-4 ${isMobNavOpen ? `show-item` : `hide-item`} des-item`} to="/transactions" onClick={()=>setIsMobNavOpen(!isMobNavOpen)}>Books</NavLink>
-    }
-
-    const transactionsNav = () => {
-        return <NavLink className={`nav-item ${isMobNavOpen ? `show-item` : `hide-item`} des-item`} to="/transactions" onClick={()=>setIsMobNavOpen(!isMobNavOpen)}>Transactions</NavLink>
-    }
-
     const usersNav = () => {
         return <NavLink className={`nav-item ${isMobNavOpen ? `show-item` : `hide-item`} des-item`} to="/users" onClick={()=>setIsMobNavOpen(!isMobNavOpen)}>Users</NavLink>
     }
@@ -44,7 +36,7 @@ const NavBar = () => {
     </span> 
     }
 
-    const librarianLogo = () => {
+    const lockIcon = () => {
         return <span className="profile-buffer nav-item hide-item des-item text-muted nav-email" data-tooltip-id="logout-tooltip">
         {authUser.email} <i className="fa fa-lock" aria-hidden="true"></i>
     </span> 
@@ -63,10 +55,9 @@ const NavBar = () => {
     return(<nav className={`liby-nav navbar navbar-expand-sm justify-content-center text-center d-flex ${isMobNavOpen ? `` : `toggle-mob-nav-height`}`} ref={tooltipRef}>
         <ul className="navbar-nav">
             {logoNav()} {homeNav()} 
-            {/* {booksNav()} */}
             {authUser ? 
             authUser.role === "Teller" ? <>{usersNav()} {userLogo()}</> 
-                :<>{usersNav()} {librarianLogo()}</> 
+                :<>{usersNav()} {lockIcon()}</> 
                 : loginNav()}
             <Tooltip id="logout-tooltip" openEvents={{ click: true }} closeEvents={{ click: true }} globalCloseEvents={{ clickOutsideAnchor: true }} clickable={true} className="bg-light text-dark border border-2 hover-pointer arrow">
                 <div onClick={()=>logout()}>Logout</div>

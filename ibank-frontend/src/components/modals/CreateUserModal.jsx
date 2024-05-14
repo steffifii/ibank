@@ -5,24 +5,30 @@ import ReactModal from "react-modal";
 const CreateUserModal = ({ isNewUserMode, setIsNewUserMode, API_ENDPOINT }) => {
 
     const handleAddUser = e => {
+        e.preventDefault();
+
         const newUser = {
             name: e.target.name.value,
             password: e.target.password.value,
             email: e.target.email.value,
             address: e.target.address.value,
             gender: e.target.gender.value,
-            birthdate: e.target.birthdate.value
+            birthdate: e.target.birthdate.value,
+            phone: e.target.phone.value,
+            role: e.target.role.value
         }
         console.log("newUser: ", newUser)
         axios({
             method: "post",
-            url: `${API_ENDPOINT}/users/register`,
+            url: `${API_ENDPOINT}/users/new`,
             data: newUser
         })
-            .then(res => {
-                console.log(`User with email ${newUser.email} created successfully. `, res);
-            })
-            .catch(err => console.error(`Error creating user with email ${newUser.email}: `, err));
+        .then(res => {
+            console.log(`User with email ${newUser.email} created successfully. `, res);
+        })
+        .catch(err => console.error(`Error creating user with email ${newUser.email}: `, err));
+
+        setIsNewUserMode(false);
     }
 
     useEffect(() => {
@@ -50,16 +56,19 @@ const CreateUserModal = ({ isNewUserMode, setIsNewUserMode, API_ENDPOINT }) => {
                             <input type="date" className="text-center text-md-start ps-sm-2 rounded-4" id="register-birthdate-input" name="birthdate" title="Please enter your full name" required/>
                         </p>
                         <p>
+                            <label htmlFor="register-address-input">Address: </label> <br />
+                            <textarea type="address" className="text-center text-md-start ps-sm-2 rounded-4" id="register-address-input" name="address" maxLength="255" title="Please enter a valid address (maximum 255 characters)" required/>
+                        </p>
+                    </div>
+                    <div className="col-sm-6">
+                        <p>
                             <label htmlFor="register-gender-input">Gender: </label> <br />
                             <select id="register-gender-input" name="gender" className="rounded-4 ps-sm-2" required>
                             <option className="text-center text-md-start" value=""></option>
                             <option className="text-center text-md-start" value="Female">Female</option>
                             <option className="text-center text-md-start" value="Male">Male</option>
-                            <option className="text-center text-md-start" value="Other">Other</option>
                             </select>
                         </p>
-                    </div>
-                    <div className="col-sm-6">
                         <p>
                             <label htmlFor="register-email-input">Email: </label> <br />
                             <input type="email" className="text-center text-md-start ps-sm-2 rounded-4" id="register-email-input" name="email" title="Please enter a valid email address" required/>
@@ -69,8 +78,12 @@ const CreateUserModal = ({ isNewUserMode, setIsNewUserMode, API_ENDPOINT }) => {
                             <input type="text" className="text-center text-md-start ps-sm-2 rounded-4" id="register-password-input" name="password" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" title="Password must be at least 8 characters and contain letters and numbers" required/>
                         </p>
                         <p>
-                            <label htmlFor="register-address-input">Address: </label> <br />
-                            <textarea type="address" className="text-center text-md-start ps-sm-2 rounded-4" id="register-address-input" name="address" maxLength="255" title="Please enter a valid address (maximum 255 characters)" required/>
+                            <label htmlFor="register-role-input">Role: </label> <br />
+                            <select id="register-role-input" name="role" className="rounded-4 ps-sm-2" required>
+                            <option className="text-center text-md-start" value=""></option>
+                            <option className="text-center text-md-start" value="Teller">Teller</option>
+                            <option className="text-center text-md-start" value="Customer">Customer</option>
+                            </select>
                         </p>
                     </div>
                 </div>

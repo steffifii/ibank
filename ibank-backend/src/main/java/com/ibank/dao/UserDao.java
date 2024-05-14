@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -77,19 +78,19 @@ public class UserDao {
     }
 
     public User saveUser(User user) {
-        String sql = "INSERT INTO users (name, email, phone, password, gender, address, birthdate, balance) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Users (name, role, email, phone, password, gender, address, birthdate) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         jdbcTemplate.update(sql,
                 user.getName(),
+                user.getRole(),
                 user.getEmail(),
                 user.getPhone(),
                 user.getPassword(),
                 user.getGender(),
                 user.getAddress(),
-                user.getBirthdate(),
-                user.getBalance());
+                user.getBirthdate());
         return user;
     }
+
 
     public boolean doesUserExist(int userId) {
         String sql = "SELECT COUNT(*) FROM users WHERE user_id = ?";

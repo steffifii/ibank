@@ -26,6 +26,7 @@ const UsersPage = () => {
     .then(res => {
       if(authUser.role==="Teller"){
         let data = res.data.filter(item=>item.role==="Customer");
+        console.log(data)
         setUsers(data);
       } else if(authUser.role==="Admin"){
         let data = res.data.filter(item=>item.role==="Customer" || item.role==="Teller");
@@ -65,6 +66,7 @@ const UsersPage = () => {
             <th>Birthdate</th>
             <th>Email</th>
             <th>Phone</th>
+            <th>Member since</th>
             <th>Role</th>
           </tr>
         </thead>
@@ -76,6 +78,7 @@ const UsersPage = () => {
               <td>{u.birthdate}</td>
               <td>{u.email}</td>
               <td>{u.phone}</td>
+              <td>{u.membershipDate}</td>
               <td>{u.role}</td>
             </tr>
           })}

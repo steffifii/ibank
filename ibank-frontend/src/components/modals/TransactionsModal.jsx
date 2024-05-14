@@ -43,6 +43,8 @@ const TransactionsModal = ({ isTransactionsPage, setIsTransactionsPage, user }) 
           .catch(err => {
                 console.error('Failed to send transactions data: Error: ', err);
           });
+
+          setIsTransactionsPage(false);
     }
     
     useEffect(()=>{

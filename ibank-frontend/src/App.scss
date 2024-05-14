@@ -157,79 +157,8 @@ a {
   }
 }
 
-/* Books */
-
-.books-page {
-  background: linear-gradient(to right, #dfe6e4, rgb(222, 228, 226), #dee6e4, #dfe5e4);
-}
-
-.btn-filter, .btn-sort {
-  font-size: 12px!important;
-}
-
-.btn-sort {
-  &:hover {
-    color: $secondary !important; 
-    background-color: rgba(255, 255, 255, 0) !important;
-    border-color: $secondary !important; 
-  }
-}
-
-.btn-sort.btn-secondary {
-  &:hover {
-    color: $light !important; 
-    background-color: $secondary !important;
-    border-color: $secondary !important; 
-  }
-}
-
 .hover-pointer:hover {
   cursor: pointer;
-}
-
-.reserve-btn:hover {
-  color: white;
-}
-
-.book-image {
-  height: 175px;
-}
-
-.tooltip-borrow {
-  color: black!important;
-  background-color: $primary!important;
-  border: #a5a595 1px solid;
-  // border-radius: 18px!important;
-}
-
-.tooltip-reserve {
-  color: black!important;
-  background-color: $primary!important;
-  border: #a5a595 1px solid;
-  // border-radius: 18px!important;
-}
-
-.m-tooltip-style {
-  z-index: 1000;
-  color: black!important;
-  background-color: #d7d4a6!important;
-  border: #a5a595 1px solid;
-  border-radius: 18px!important;
-}
-
-.tooltip-button {
-  border-radius: 50px!important;
-}
-
-.tooltip-button:hover {
-  background-color: green!important;
-  color: white!important;
-}
-
-@media (min-width: 576px) {
-  .books-page {
-    padding: 100px 90px;
-  }
 }
 
 // users
@@ -240,7 +169,7 @@ a {
 
 /* Register */
 
-#register-name-input, #register-email-input, #register-phone-input, #register-gender-input, #register-address-input, #register-password-input, #register-birthdate-input,
+#register-name-input, #register-email-input, #register-phone-input, #register-role-input, #register-gender-input, #register-address-input, #register-password-input, #register-birthdate-input,
 
 /* User */
 
